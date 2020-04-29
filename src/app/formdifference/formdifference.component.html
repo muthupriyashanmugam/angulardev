@@ -1,0 +1,54 @@
+<h2>The difference between Reactive form and Template driven form </h2>
+
+
+<table>
+    <tr>
+        <th>Reactive Form</th>
+        <th>Template Driven Form</th>
+    </tr>
+    <tr>
+        <td><h3>Reactive form example</h3>
+            
+        Favorite Color:  <input type="text" [formControl]="favoriteColorControl">
+        <br><button (click)="defaultColor()">Set Default</button>
+            <pre>
+                <code [innerHtml]="html_reactive_content"></code>
+            </pre>
+        </td>
+        <td><h3>Template Driven form example</h3>
+            Favorite Color: <input type="text" [(ngModel)]="favoriteColor">
+            <br><button (click)="defaultTemplateColor()">Set Default</button>
+            <pre>
+                <code [innerHtml]="html_template_content"></code>
+            </pre>
+        </td>
+    </tr>
+    <tr>
+        <td><p>The reactive form directive (in this case, FormControlDirective) then links the existing FormControl instance 
+            to a specific form element in the view using a value accessor (ControlValueAccessor instance).</p></td>
+        <td><p>The template-driven form directive NgModel is responsible for creating and managing the FormControl instance for a given form element.</p></td>
+    </tr>
+    <tr>
+        <td><h3>Data Flow</h3>
+        <p>Each form element in the view is directly linked to a form model (FormControl instance). </p>
+        <h2> View to Model </h2>
+        <p>Form Input emits-----> input event with new value ----> ControlValueAccessor listening for an event ---> to form control instance (emits) ----> new value via valueChanges </p>
+        <!-- <span> Note : Any subscribers to the valueChanges observable receive the new value.</span> -->
+        <h2> Model to View </h2>
+        <p>The user calls ----> favoriteColorControl.setValue() [updates the FormControl value] ----> FormControl instance emits ----> new value via valueChanges ----> control value accessor on the form input element updates the element with the new value.</p>    
+        <span><mark> Note : Any subscribers to the valueChanges observable receive the new value </mark></span>
+        </td>
+        
+        <td><h3>Data Flow</h3>
+        <p>Each form element is linked to a directive that manages the form model internally. </p>
+        <h2> View to Model </h2>
+        <p> Form Input emits-----> input event with new value 
+            ----> ControlValueAccessor listening for an event ---> 
+            to form control instance (emits) ----> new value via valueChanges 
+            ----> control value accessor also calls the <mark>NgModel.viewToModelUpdate()</mark> method which emits an ngModelChange event.</p>
+        <h2> Model to View </h2>
+        <p> If value is updated in the component ----> change detection begins ----> <mark>ngOnChanges lifecycle hook</mark> is called on the NgModel directive instance ----> Once Change detection completes ---->  FormControl instance value is executed ----> FormControl instance emits ----> new value via valueChanges ----> control value accessor on the form input element updates the element with the new value</p>
+        <span><mark> Note : Any subscribers to the valueChanges observable receive the new value. </mark></span>
+        </td>
+    </tr>
+</table>

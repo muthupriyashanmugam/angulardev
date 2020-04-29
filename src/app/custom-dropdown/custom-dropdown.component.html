@@ -1,0 +1,27 @@
+<div style='margin-left:40px;'>
+<h1>custom-dropdown </h1>
+<div style='width:100%'>
+<mat-form-field>
+    <mat-label>Select States</mat-label>
+    <mat-select [(ngModel)]="selectedState" (selectionChange)="onSelect($event)">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let states of dropdownList" [value]="states.value">
+        {{states.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p>Selected State : {{selectedState}}</p>
+</div>
+<div>
+  <mat-form-field>
+    <mat-label>Select Cities</mat-label>
+    <mat-select [(ngModel)]="selectedCity">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let city of cities" [value]="city">
+        {{city}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+  <p> Selected city : {{selectedCity}}</p>
+  </div>
