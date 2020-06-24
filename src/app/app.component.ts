@@ -17,7 +17,9 @@ export class AppComponent implements OnDestroy {
     {name:'Bulk Delete', link:'/bulkdelete'},
     {name : 'Dropdown', link:'/dropdown'},
     {name : 'Embed Video', link:'/embedvideo'},
-    {name : 'Form Difference',link:'/forms'}
+    {name : 'Angular inbuilt pipes', link:'/inbuiltpipes'},
+    {name : 'Form Difference',link:'/forms'},
+    {name : 'Observer Promises Diff',link:'/observepromise'}
   ];
 
 

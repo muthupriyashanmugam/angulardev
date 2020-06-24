@@ -8,6 +8,9 @@ import { CustomDropdownComponent } from '../app/custom-dropdown/custom-dropdown.
 import { EmbedVideoComponent } from '../app/embed-video/embed-video.component';
 import { BulkDeleteComponent } from '../app/bulk-delete/bulk-delete.component';
 import { CustomAnimationComponent } from '../app/custom-animation/custom-animation.component';
+import { InBuiltPipesComponent } from '../app/in-built-pipes/in-built-pipes.component';
+import { ObservepromisediffComponent } from '../app/observepromisediff/observepromisediff.component';
+
 
 const routes: Routes = [
   { 
@@ -20,8 +23,10 @@ const routes: Routes = [
   {path:'bulkdelete',component: BulkDeleteComponent},
   {path:'dropdown',component: CustomDropdownComponent},
   {path:'embedvideo',component: EmbedVideoComponent},
+  {path:'inbuiltpipes',component: InBuiltPipesComponent},
   {path:'product',component: ProductlistComponent},
-  {path:'forms',component:FormdifferenceComponent}
+  {path:'forms',component:FormdifferenceComponent},
+  {path:'observepromise',component:ObservepromisediffComponent}
 ];
 
 @NgModule({

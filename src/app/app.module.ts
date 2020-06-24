@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import * as hljs from 'highlight.js';
+import { HighlightJsModule, HIGHLIGHT_JS } from 'angular-highlight-js';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +29,15 @@ import { CustomDropdownComponent } from './custom-dropdown/custom-dropdown.compo
 import { EmbedVideoComponent } from './embed-video/embed-video.component';
 import { BulkDeleteComponent } from './bulk-delete/bulk-delete.component';
 import { CustomAnimationComponent } from './custom-animation/custom-animation.component';
+import { InBuiltPipesComponent } from './in-built-pipes/in-built-pipes.component';
+import { ObservepromisediffComponent } from './observepromisediff/observepromisediff.component';
+
+import typescript from 'highlight.js/lib/languages/typescript';
+hljs.registerLanguage('typescript', typescript);
+
+export function highlightJsFactory() {
+  return hljs;
+}
 
 @NgModule({
   declarations: [
@@ -38,7 +49,9 @@ import { CustomAnimationComponent } from './custom-animation/custom-animation.co
     CustomDropdownComponent,
     EmbedVideoComponent,
     BulkDeleteComponent,
-    CustomAnimationComponent
+    CustomAnimationComponent,
+    InBuiltPipesComponent,
+    ObservepromisediffComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +70,11 @@ import { CustomAnimationComponent } from './custom-animation/custom-animation.co
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
+    HighlightJsModule.forRoot({
+      provide: HIGHLIGHT_JS,
+      useFactory: highlightJsFactory
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
